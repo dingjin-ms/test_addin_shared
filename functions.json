@@ -1,0 +1,181 @@
+{
+    "allowCustomDataForDataTypeAny": true,
+    "functions": [
+        {
+            "description": "Add two numbers",
+            "id": "ADD",
+            "name": "ADD",
+            "parameters": [
+                {
+                    "description": "First number",
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "description": "Second number",
+                    "name": "second",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Displays the current time once a second",
+            "id": "CLOCK",
+            "name": "CLOCK",
+            "options": {
+                "stream": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Increments a value once a second.",
+            "id": "INCREMENT",
+            "name": "INCREMENT",
+            "options": {
+                "stream": true
+            },
+            "parameters": [
+                {
+                    "description": "Amount to increment",
+                    "name": "incrementBy",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Writes a message to console.log().",
+            "id": "LOG",
+            "name": "LOG",
+            "parameters": [
+                {
+                    "description": "String to write.",
+                    "name": "message",
+                    "type": "string"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Return random int - 10",
+            "id": "RETURNINT",
+            "name": "RETURNINT",
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return random int - 100",
+            "id": "RETURNINTPROMISE",
+            "name": "RETURNINTPROMISE",
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return random int - 1000",
+            "id": "RETURNINTVOLATILE",
+            "name": "RETURNINTVOLATILE",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return current time",
+            "id": "RETURNSTRINGVOLATILE",
+            "name": "RETURNSTRINGVOLATILE",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Return current time",
+            "id": "RETURNSTRINGSTREAM",
+            "name": "RETURNSTRINGSTREAM",
+            "options": {
+                "stream": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return current time",
+            "id": "RETURNSTRINGDYNAMICARRAY",
+            "name": "RETURNSTRINGDYNAMICARRAY",
+            "parameters": [],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Return nested range",
+            "id": "RETURNSTRINGNESTED",
+            "name": "RETURNSTRINGNESTED",
+            "parameters": [
+                {
+                    "name": "range",
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Wait before returning current time",
+            "id": "RETURNSTRINGWAIT",
+            "name": "RETURNSTRINGWAIT",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Wait before returning current time",
+            "id": "RETURNSTRINGWAITVOLATILE",
+            "name": "RETURNSTRINGWAITVOLATILE",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "Input a string to output",
+            "id": "INPUTSTRING",
+            "name": "INPUTSTRING",
+            "parameters": [
+                {
+                    "name": "str",
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        }
+    ]
+}
