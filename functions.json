@@ -153,6 +153,18 @@
         },
         {
             "description": "Return current time",
+            "id": "RETURNTESTSTRINGSTREAM1S",
+            "name": "RETURNTESTSTRINGSTREAM1S",
+            "options": {
+                "stream": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return current time",
             "id": "RETURNSTRINGDYNAMICARRAY",
             "name": "RETURNSTRINGDYNAMICARRAY",
             "parameters": [],
