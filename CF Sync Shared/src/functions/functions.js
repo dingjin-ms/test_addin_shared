@@ -94,6 +94,21 @@ function returnIntPromise() {
 }
 
 /**
+ * Return 42
+ * @customfunction
+ * @returns {number} Return 42.
+ */
+function return42Promise() {
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] `, 'Call return42Promise.');
+  return new Promise(function (resolve) {
+      setTimeout(function () {
+          resolve(42);
+      }, 1000);
+  });
+}
+
+/**
  * Return random int - 1000
  * @customfunction
  * @volatile
@@ -103,6 +118,18 @@ function returnIntVolatile() {
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnIntVolatile.');
   return Math.floor(Math.random() * 1000)
+}
+
+/**
+ * Return 42
+ * @customfunction
+ * @volatile
+ * @returns {number} Return 42.
+ */
+function return42Volatile() {
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] `, 'Call return42Volatile.');
+  return 42;
 }
 
 /**
@@ -122,17 +149,59 @@ function returnStringVolatile() {
  * @customfunction
  * @param {CustomFunctions.StreamingInvocation<number>} invocation
  */
-export function returnStringStream(invocation) {
+export function returnStringStream5m(invocation) {
   let result = currentTime();
   invocation.setResult(result);
   var timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] `, 'Call returnStringStream#1.');
+  console.log(`[${timestamp}] `, 'Call returnStringStream5m#1.');
   const timer = setInterval(() => {
     //var timestamp = new Date().toISOString();
     result = currentTime();
     invocation.setResult(result);
-    console.log(`[${result}] `, 'Call returnStringStream#2.');
+    console.log(`[${result}] `, 'Call returnStringStream5m#2.');
   }, 1000 * 60 * 5);
+
+  invocation.onCanceled = () => {
+    clearInterval(timer);
+  };
+}
+
+/**
+ * Return current time
+ * @customfunction
+ * @param {CustomFunctions.StreamingInvocation<number>} invocation
+ */
+export function returnStringStream1s(invocation) {
+  let result = currentTime();
+  invocation.setResult(result);
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] `, 'Call returnStringStream1s#1.');
+  const timer = setInterval(() => {
+    //var timestamp = new Date().toISOString();
+    result = currentTime();
+    invocation.setResult(result);
+    console.log(`[${result}] `, 'Call returnStringStream1s#2.');
+  }, 1000);
+
+  invocation.onCanceled = () => {
+    clearInterval(timer);
+  };
+}
+
+/**
+ * Return current time
+ * @customfunction
+ * @param {CustomFunctions.StreamingInvocation<number>} invocation
+ */
+export function returnTestStringStream1s(invocation) {
+  invocation.setResult(123);
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] `, 'Call returnTestStringStream1s#1.');
+  const timer = setInterval(() => {
+    var timestamp = new Date().toISOString();
+    invocation.setResult(123);
+    console.log(`[${timestamp}] `, 'Call returnTestStringStream1s#2.');
+  }, 1000);
 
   invocation.onCanceled = () => {
     clearInterval(timer);
@@ -148,6 +217,17 @@ export function returnStringDynamicArray() {
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnStringDynamicArray.');
   return [[currentTime(), currentTime(), currentTime()]];
+}
+
+/**
+ * Return test strings
+ * @customfunction
+ * @returns {string[][]} Return test strings.
+ */
+export function returnStringTestDynamicArray() {
+  var timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] `, 'Call returnStringTestDynamicArray.');
+  return [["1", "2", "3"]];
 }
 
 /**
@@ -195,6 +275,19 @@ export function returnStringWaitVolatile() {
 }
 
 /**
+ * Take a number as the input value and return a double as the output.
+ * @customfunction
+ * @returns A formatted number value.
+ */
+function returnDoubleCellValue() {
+    return {
+        type: "Double",
+        basicValue: 10,
+        numberFormat: "0.00%"
+    }
+}
+
+/**
  * Input a string to output
  * @customfunction
  * @returns {string} Return input.
@@ -203,4 +296,63 @@ export function inputString(str) {
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}]`, 'Call inputString.');
   return str;
+}
+
+/**
+ * @customfunction
+ * @param {number} first
+ * @param {number} second
+ * @param {number} [third]
+ * @returns {number}
+ */
+function inputIntOptional(first, second, third) {
+  if (third === null) third = 0;
+  return first + second + third;
+}
+
+/**
+ * @customfunction
+ * @param {number[]} values
+ * @returns {number}
+ */
+function inputIntRepeating(values) {
+  const sum = values.reduce((a, b) => a + b, 0);
+  return sum / values.length;
+}
+
+/**
+ * Returns the second highest value in a matrixed range of values.
+ * @customfunction
+ * @param {number[][]} values Multiple ranges of values.
+ */
+function inputRangeParams(values) {
+  let highest = Number.MIN_SAFE_INTEGER,
+    secondHighest = Number.MIN_SAFE_INTEGER;
+  for (let i = 0; i < values.length; i++) {
+    for (let j = 0; j < values[i].length; j++) {
+      if (values[i][j] >= highest) {
+        secondHighest = highest;
+        highest = values[i][j];
+      } else if (values[i][j] >= secondHighest) {
+        secondHighest = values[i][j];
+      }
+    }
+  }
+  if (secondHighest === Number.MIN_SAFE_INTEGER) {
+    secondHighest = null; // No second highest found
+  }
+  return secondHighest;
+}
+
+/**
+ * Return the address of the cell that invoked the custom function. 
+ * @customfunction
+ * @param {number} first First parameter.
+ * @param {number} second Second parameter.
+ * @param {CustomFunctions.Invocation} invocation Invocation object. 
+ * @requiresAddress 
+ */
+function intputInvocation(first, second, invocation) {
+  const address = invocation.address;
+  return address;
 }
