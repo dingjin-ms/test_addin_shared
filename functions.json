@@ -195,6 +195,22 @@
             }
         },
         {
+            "description": "Take a number as the input value and return a double as the output.",
+            "id": "RETURNDOUBLECELLVALUE",
+            "name": "RETURNDOUBLECELLVALUE",
+            "parameters": [
+                {
+                    "name": "value",
+                    "type": "any"
+                },
+                {
+                    "name": "format",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
             "description": "Input a string to output",
             "id": "INPUTSTRING",
             "name": "INPUTSTRING",
