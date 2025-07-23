@@ -129,8 +129,20 @@
         },
         {
             "description": "Return current time",
-            "id": "RETURNSTRINGSTREAM",
-            "name": "RETURNSTRINGSTREAM",
+            "id": "RETURNSTRINGSTREAM5M",
+            "name": "RETURNSTRINGSTREAM5M",
+            "options": {
+                "stream": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return current time",
+            "id": "RETURNSTRINGSTREAM1S",
+            "name": "RETURNSTRINGSTREAM1S",
             "options": {
                 "stream": true
             },
