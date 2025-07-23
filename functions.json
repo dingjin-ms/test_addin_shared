@@ -205,7 +205,6 @@
             "parameters": [
                 {
                     "name": "values",
-                    "optional": true,
                     "repeating": true,
                     "type": "number"
                 }
@@ -223,6 +222,27 @@
                     "description": "Multiple ranges of values.",
                     "dimensionality": "matrix",
                     "name": "values",
+                    "type": "number"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Return the address of the cell that invoked the custom function.",
+            "id": "INTPUTINVOCATION",
+            "name": "INTPUTINVOCATION",
+            "options": {
+                "requiresAddress": true
+            },
+            "parameters": [
+                {
+                    "description": "First parameter.",
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "description": "Second parameter.",
+                    "name": "second",
                     "type": "number"
                 }
             ],
