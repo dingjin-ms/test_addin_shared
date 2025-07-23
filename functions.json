@@ -83,9 +83,30 @@
             }
         },
         {
+            "description": "Return 42",
+            "id": "RETURN42PROMISE",
+            "name": "RETURN42PROMISE",
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
             "description": "Return random int - 1000",
             "id": "RETURNINTVOLATILE",
             "name": "RETURNINTVOLATILE",
+            "options": {
+                "volatile": true
+            },
+            "parameters": [],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Return 42",
+            "id": "RETURN42VOLATILE",
+            "name": "RETURN42VOLATILE",
             "options": {
                 "volatile": true
             },
@@ -122,6 +143,16 @@
             "description": "Return current time",
             "id": "RETURNSTRINGDYNAMICARRAY",
             "name": "RETURNSTRINGDYNAMICARRAY",
+            "parameters": [],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "string"
+            }
+        },
+        {
+            "description": "Return test strings",
+            "id": "RETURNSTRINGTESTDYNAMICARRAY",
+            "name": "RETURNSTRINGTESTDYNAMICARRAY",
             "parameters": [],
             "result": {
                 "dimensionality": "matrix",
