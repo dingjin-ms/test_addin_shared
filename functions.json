@@ -176,6 +176,57 @@
             "result": {
                 "type": "string"
             }
+        },
+        {
+            "id": "INPUTINTOPTIONAL",
+            "name": "INPUTINTOPTIONAL",
+            "parameters": [
+                {
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "name": "second",
+                    "type": "number"
+                },
+                {
+                    "name": "third",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "id": "INPUTINTREPEATING",
+            "name": "INPUTINTREPEATING",
+            "parameters": [
+                {
+                    "name": "values",
+                    "optional": true,
+                    "repeating": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Returns the second highest value in a matrixed range of values.",
+            "id": "INPUTRANGEPARAMS",
+            "name": "INPUTRANGEPARAMS",
+            "parameters": [
+                {
+                    "description": "Multiple ranges of values.",
+                    "dimensionality": "matrix",
+                    "name": "values",
+                    "type": "number"
+                }
+            ],
+            "result": {}
         }
     ]
 }
