@@ -309,6 +309,24 @@
                 }
             ],
             "result": {}
+        },
+        {
+            "description": "This function will call the write API to write \"Hello\" to A1.",
+            "id": "CALLWRITEAPI",
+            "name": "CALLWRITEAPI",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "This function will call the read API to read the value from A1.",
+            "id": "CALLREADAPI",
+            "name": "CALLREADAPI",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }
