@@ -356,3 +356,38 @@ function intputInvocation(first, second, invocation) {
   const address = invocation.address;
   return address;
 }
+
+/**
+ * This function will call the write API to write "Hello" to A1.
+ * @customfunction
+ * @returns {string} 
+ */
+async function callWriteApi() {
+  Excel.run(async (context) => {
+    let sheet = context.workbook.worksheets.getActiveWorksheet();
+    let range = sheet.getRange("A1");
+    range.values = [["Hello"]];
+    await context.sync();
+  });
+
+  return "test";
+}
+
+/** 
+ * This function will call the read API to read the value from A1.
+ * @customfunction
+ * @returns {string} 
+ */
+async function callReadApi() {
+  var result = "Initial value";
+  await Excel.run(async (context) => {
+    let sheet = context.workbook.worksheets.getActiveWorksheet();
+    let range = sheet.getRange("A1");
+    range.load("values");
+    await context.sync();
+    console.log(range.values[0][0]);
+    result = range.values[0][0] || "No value found";
+  });
+
+  return result;
+}
