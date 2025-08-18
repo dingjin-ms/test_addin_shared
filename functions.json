@@ -336,6 +336,21 @@
             "result": {
                 "type": "string"
             }
+        },
+        {
+            "description": "Wait for a specified number of seconds.",
+            "id": "WAITXSECONDSPROMISE",
+            "name": "WAITXSECONDSPROMISE",
+            "parameters": [
+                {
+                    "description": "The number of seconds to wait.",
+                    "name": "seconds",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }
