@@ -391,3 +391,22 @@ async function callReadApi() {
 
   return result;
 }
+
+/**
+ * This function will call the read API to read the value from A1 10 times using context.sync() 10 times.
+ * @customfunction
+ * @returns {string} 
+ */
+async function callContextSync10Times() {
+  var result = "Initial value";
+  await Excel.run(async (context) => {
+    for (let i = 0; i < 10; i++) {
+      let sheet = context.workbook.worksheets.getActiveWorksheet();
+      let range = sheet.getRange("A1");
+      range.load("values");
+      await context.sync();
+      result = range.values[0][0] || "No value found";
+    }
+  });
+  return result;
+}
