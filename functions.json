@@ -351,6 +351,24 @@
             "result": {
                 "type": "string"
             }
+        },
+        {
+            "description": "This function will call the write API to write \"Hello\" to A1.",
+            "id": "SYNCCALLWRITEAPI",
+            "name": "SYNCCALLWRITEAPI",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "This function will call the read API to read the value from A1.",
+            "id": "SYNCCALLREADAPI",
+            "name": "SYNCCALLREADAPI",
+            "parameters": [],
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }
