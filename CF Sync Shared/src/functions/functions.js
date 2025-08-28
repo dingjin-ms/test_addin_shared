@@ -410,3 +410,54 @@ async function callContextSync10Times() {
   });
   return result;
 }
+
+/**
+ * Wait for a specified number of seconds.
+ * @customfunction
+ * @param {number} seconds The number of seconds to wait.
+ * @returns {string} A message indicating the wait is over.
+ */
+async function waitXSecondsPromise(seconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Waited ${seconds} seconds`);
+    }, seconds * 1000);
+  });
+}
+
+/**
+ * This function will call the write API to write "Hello" to A1.
+ * @customfunction
+ * @supportSync
+ * @returns {string} 
+ */
+async function syncCallWriteApi() {
+  Excel.run(async (context) => {
+    let sheet = context.workbook.worksheets.getActiveWorksheet();
+    let range = sheet.getRange("A1");
+    range.values = [["Hello"]];
+    await context.sync();
+  });
+
+  return "test";
+}
+
+/** 
+ * This function will call the read API to read the value from A1.
+ * @customfunction
+ * @supportSync
+ * @returns {string} 
+ */
+async function syncCallReadApi() {
+  var result = "Initial value";
+  await Excel.run(async (context) => {
+    let sheet = context.workbook.worksheets.getActiveWorksheet();
+    let range = sheet.getRange("A1");
+    range.load("values");
+    await context.sync();
+    console.log(range.values[0][0]);
+    result = range.values[0][0] || "No value found";
+  });
+
+  return result;
+}
