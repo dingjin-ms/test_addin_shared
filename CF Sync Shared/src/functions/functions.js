@@ -429,15 +429,17 @@ async function waitXSecondsPromise(seconds) {
  * This function will call the write API to write "Hello" to A1.
  * @customfunction
  * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} 
  */
-async function syncCallWriteApi() {
-  Excel.run(async (context) => {
-    let sheet = context.workbook.worksheets.getActiveWorksheet();
-    let range = sheet.getRange("A1");
-    range.values = [["Hello"]];
-    await context.sync();
-  });
+async function syncCallWriteApi(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
+
+  let sheet = context.workbook.worksheets.getActiveWorksheet();
+  let range = sheet.getRange("A1");
+  range.values = [["Hello"]];
+  await context.sync();
 
   return "test";
 }
@@ -446,18 +448,20 @@ async function syncCallWriteApi() {
  * This function will call the read API to read the value from A1.
  * @customfunction
  * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} 
  */
-async function syncCallReadApi() {
+async function syncCallReadApi(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
+
   var result = "Initial value";
-  await Excel.run(async (context) => {
-    let sheet = context.workbook.worksheets.getActiveWorksheet();
-    let range = sheet.getRange("A1");
-    range.load("values");
-    await context.sync();
-    console.log(range.values[0][0]);
-    result = range.values[0][0] || "No value found";
-  });
+  let sheet = context.workbook.worksheets.getActiveWorksheet();
+  let range = sheet.getRange("A1");
+  range.load("values");
+  await context.sync();
+  console.log(range.values[0][0]);
+  result = range.values[0][0] || "No value found";
 
   return result;
 }
