@@ -369,6 +369,27 @@
             "result": {
                 "type": "string"
             }
+        },
+        {
+            "description": "Search for products that match a given substring. Try =SCRIPTLAB.DATATYPESCUSTOMFUNCTIONS.PRODUCTSEARCH(\"chef\", false).",
+            "id": "PRODUCTSEARCH",
+            "name": "PRODUCTSEARCH",
+            "parameters": [
+                {
+                    "description": "The string to search for in the sample JSON data.",
+                    "name": "query",
+                    "type": "string"
+                },
+                {
+                    "description": "Define whether the search should be a match of the whole product name or part of the product name. If omitted, completeMatch = false.",
+                    "name": "completeMatch",
+                    "optional": true,
+                    "type": "boolean"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix"
+            }
         }
     ]
 }
