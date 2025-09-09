@@ -444,6 +444,30 @@ async function syncCallWriteApi(invocation) {
   return "test";
 }
 
+/**
+ * This function will call the write API to write "Hello" to A1.
+ * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
+ * @returns {string} 
+ */
+async function syncCallWriteApiCatch(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
+
+  try {
+      let sheet = context.workbook.worksheets.getActiveWorksheet();
+      let range = sheet.getRange("A1");
+      range.values = [["Hello"]];
+      await context.sync();
+  } catch (error) {
+      console.error(error);
+      return "test-error";
+  }
+
+  return "test";
+}
+
 /** 
  * This function will call the read API to read the value from A1.
  * @customfunction
