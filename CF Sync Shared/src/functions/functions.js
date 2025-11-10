@@ -451,9 +451,13 @@ async function callReadApi() {
 /**
  * This function will call the read API to read the value from A1 10 times using context.sync() 10 times.
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} 
  */
-async function callContextSync10Times() {
+async function callContextSync10Times(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var result = "Initial value";
   await Excel.run(async (context) => {
     for (let i = 0; i < 10; i++) {
