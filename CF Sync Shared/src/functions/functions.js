@@ -3,11 +3,15 @@
 /**
  * Add two numbers
  * @customfunction
+ * @supportSync
  * @param {number} first First number
  * @param {number} second Second number
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number} The sum of the two numbers.
  */
-export function add(first, second) {
+export function add(first, second, invocation) {
+  const context = new Excel.RequestContext(); 
+  context.setInvocation(invocation); 
   return first + second;
 }
 
@@ -70,9 +74,13 @@ export function logMessage(message) {
 /**
  * Return random int - 10
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number} Return random int - 10.
  */
-function returnInt() {
+function returnInt(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnInt.');
   return Math.floor(Math.random() * 10);
@@ -81,9 +89,13 @@ function returnInt() {
 /**
  * Return random int - 100
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number} Return random int - 100.
  */
-function returnIntPromise() {
+function returnIntPromise(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnIntPromise.');
   return new Promise(function (resolve) {
@@ -96,9 +108,13 @@ function returnIntPromise() {
 /**
  * Return 42
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number} Return 42.
  */
-function return42Promise() {
+function return42Promise(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call return42Promise.');
   return new Promise(function (resolve) {
@@ -211,9 +227,13 @@ export function returnTestStringStream1s(invocation) {
 /**
  * Return current time
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string[][]} Return current time.
  */
-export function returnStringDynamicArray() {
+export function returnStringDynamicArray(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnStringDynamicArray.');
   return [[currentTime(), currentTime(), currentTime()]];
@@ -222,9 +242,13 @@ export function returnStringDynamicArray() {
 /**
  * Return test strings
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string[][]} Return test strings.
  */
-export function returnStringTestDynamicArray() {
+export function returnStringTestDynamicArray(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnStringTestDynamicArray.');
   return [["1", "2", "3"]];
@@ -233,10 +257,14 @@ export function returnStringTestDynamicArray() {
 /**
  * Return nested range
  * @customfunction
- * @param {string[][]} values Multiple ranges of values.
+ * @supportSync
+ * @param {string[][]} range Multiple ranges of values.
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} Return nested range.
  */
-export function returnStringNested(range) {
+export function returnStringNested(range, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var cell = range[0];
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnStringNested.');
@@ -246,9 +274,13 @@ export function returnStringNested(range) {
 /**
  * Wait before returning current time
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} Return current time.
  */
-export function returnStringWait() {
+export function returnStringWait(invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}] `, 'Call returnStringWait.');
   var num = 0;
@@ -277,9 +309,13 @@ export function returnStringWaitVolatile() {
 /**
  * Take a number as the input value and return a double as the output.
  * @customfunction
+ * @supportSync
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns A formatted number value.
  */
-function returnDoubleCellValue() {
+function returnDoubleCellValue(invocation) {
+    const context = new Excel.RequestContext();
+    context.setInvocation(invocation);
     return {
         type: "Double",
         basicValue: 10,
@@ -290,9 +326,14 @@ function returnDoubleCellValue() {
 /**
  * Input a string to output
  * @customfunction
+ * @supportSync
+ * @param {string} str String to output.
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} Return input.
  */
-export function inputString(str) {
+export function inputString(str, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   var timestamp = new Date().toISOString();
   console.log(`[${timestamp}]`, 'Call inputString.');
   return str;
@@ -300,22 +341,30 @@ export function inputString(str) {
 
 /**
  * @customfunction
+ * @supportSync
  * @param {number} first
  * @param {number} second
  * @param {number} [third]
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number}
  */
-function inputIntOptional(first, second, third) {
+function inputIntOptional(first, second, third, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   if (third === null) third = 0;
   return first + second + third;
 }
 
 /**
  * @customfunction
+ * @supportSync
  * @param {number[]} values
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {number}
  */
-function inputIntRepeating(values) {
+function inputIntRepeating(values, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   const sum = values.reduce((a, b) => a + b, 0);
   return sum / values.length;
 }
@@ -323,9 +372,13 @@ function inputIntRepeating(values) {
 /**
  * Returns the second highest value in a matrixed range of values.
  * @customfunction
+ * @supportSync
  * @param {number[][]} values Multiple ranges of values.
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  */
-function inputRangeParams(values) {
+function inputRangeParams(values, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   let highest = Number.MIN_SAFE_INTEGER,
     secondHighest = Number.MIN_SAFE_INTEGER;
   for (let i = 0; i < values.length; i++) {
@@ -347,12 +400,15 @@ function inputRangeParams(values) {
 /**
  * Return the address of the cell that invoked the custom function. 
  * @customfunction
+ * @supportSync
  * @param {number} first First parameter.
  * @param {number} second Second parameter.
  * @param {CustomFunctions.Invocation} invocation Invocation object. 
  * @requiresAddress 
  */
 function intputInvocation(first, second, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   const address = invocation.address;
   return address;
 }
@@ -414,10 +470,14 @@ async function callContextSync10Times() {
 /**
  * Wait for a specified number of seconds.
  * @customfunction
+ * @supportSync
  * @param {number} seconds The number of seconds to wait.
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @returns {string} A message indicating the wait is over.
  */
-async function waitXSecondsPromise(seconds) {
+async function waitXSecondsPromise(seconds, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(`Waited ${seconds} seconds`);
@@ -493,11 +553,15 @@ async function syncCallReadApi(invocation) {
 /**
  * Search for products that match a given substring. Try =SCRIPTLAB.DATATYPESCUSTOMFUNCTIONS.PRODUCTSEARCH("chef", false).
  * @customfunction
+ * @supportSync
  * @param {string} query The string to search for in the sample JSON data.
  * @param {boolean} [completeMatch] Define whether the search should be a match of the whole product name or part of the product name. If omitted, completeMatch = false.
+ * @param {CustomFunctions.Invocation} invocation Invocation object.
  * @return {Promise<any[][]>} Search results as one or more data type entity values.
  */
-async function productSearch(query, completeMatch) {
+async function productSearch(query, completeMatch, invocation) {
+  const context = new Excel.RequestContext();
+  context.setInvocation(invocation);
   // This function searches a set of sample JSON data for the string entered in the
   // custom function, and then returns the search result as one or more entity values.
 
