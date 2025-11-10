@@ -22,6 +22,26 @@
             }
         },
         {
+            "description": "Add two numbers",
+            "id": "ADDTEST",
+            "name": "ADDTEST",
+            "parameters": [
+                {
+                    "description": "First number",
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "description": "Second number",
+                    "name": "second",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
             "description": "Displays the current time once a second",
             "id": "CLOCK",
             "name": "CLOCK",
