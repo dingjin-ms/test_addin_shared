@@ -375,6 +375,9 @@
             "description": "This function will call the read API to read the value from A1 10 times using context.sync() 10 times.",
             "id": "CALLCONTEXTSYNC10TIMES",
             "name": "CALLCONTEXTSYNC10TIMES",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "type": "string"
