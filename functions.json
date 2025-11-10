@@ -71,6 +71,9 @@
             "description": "Return random int - 10",
             "id": "RETURNINT",
             "name": "RETURNINT",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "type": "number"
@@ -80,6 +83,9 @@
             "description": "Return random int - 100",
             "id": "RETURNINTPROMISE",
             "name": "RETURNINTPROMISE",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "type": "number"
@@ -89,6 +95,9 @@
             "description": "Return 42",
             "id": "RETURN42PROMISE",
             "name": "RETURN42PROMISE",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "type": "number"
@@ -170,6 +179,9 @@
             "description": "Return current time",
             "id": "RETURNSTRINGDYNAMICARRAY",
             "name": "RETURNSTRINGDYNAMICARRAY",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "dimensionality": "matrix",
@@ -180,6 +192,9 @@
             "description": "Return test strings",
             "id": "RETURNSTRINGTESTDYNAMICARRAY",
             "name": "RETURNSTRINGTESTDYNAMICARRAY",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "dimensionality": "matrix",
@@ -190,10 +205,15 @@
             "description": "Return nested range",
             "id": "RETURNSTRINGNESTED",
             "name": "RETURNSTRINGNESTED",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
+                    "description": "Multiple ranges of values.",
+                    "dimensionality": "matrix",
                     "name": "range",
-                    "type": "any"
+                    "type": "string"
                 }
             ],
             "result": {
@@ -204,6 +224,9 @@
             "description": "Wait before returning current time",
             "id": "RETURNSTRINGWAIT",
             "name": "RETURNSTRINGWAIT",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {
                 "type": "string"
@@ -225,6 +248,9 @@
             "description": "Take a number as the input value and return a double as the output.",
             "id": "RETURNDOUBLECELLVALUE",
             "name": "RETURNDOUBLECELLVALUE",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [],
             "result": {}
         },
@@ -232,10 +258,14 @@
             "description": "Input a string to output",
             "id": "INPUTSTRING",
             "name": "INPUTSTRING",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
+                    "description": "String to output.",
                     "name": "str",
-                    "type": "any"
+                    "type": "string"
                 }
             ],
             "result": {
@@ -245,6 +275,9 @@
         {
             "id": "INPUTINTOPTIONAL",
             "name": "INPUTINTOPTIONAL",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
                     "name": "first",
@@ -267,6 +300,9 @@
         {
             "id": "INPUTINTREPEATING",
             "name": "INPUTINTREPEATING",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
                     "name": "values",
@@ -282,6 +318,9 @@
             "description": "Returns the second highest value in a matrixed range of values.",
             "id": "INPUTRANGEPARAMS",
             "name": "INPUTRANGEPARAMS",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
                     "description": "Multiple ranges of values.",
@@ -297,7 +336,8 @@
             "id": "INTPUTINVOCATION",
             "name": "INTPUTINVOCATION",
             "options": {
-                "requiresAddress": true
+                "requiresAddress": true,
+                "supportSync": true
             },
             "parameters": [
                 {
@@ -344,6 +384,9 @@
             "description": "Wait for a specified number of seconds.",
             "id": "WAITXSECONDSPROMISE",
             "name": "WAITXSECONDSPROMISE",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
                     "description": "The number of seconds to wait.",
@@ -395,6 +438,9 @@
             "description": "Search for products that match a given substring. Try =SCRIPTLAB.DATATYPESCUSTOMFUNCTIONS.PRODUCTSEARCH(\"chef\", false).",
             "id": "PRODUCTSEARCH",
             "name": "PRODUCTSEARCH",
+            "options": {
+                "supportSync": true
+            },
             "parameters": [
                 {
                     "description": "The string to search for in the sample JSON data.",
