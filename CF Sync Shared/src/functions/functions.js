@@ -459,15 +459,13 @@ async function callContextSync10Times(invocation) {
   const context = new Excel.RequestContext();
   context.setInvocation(invocation);
   var result = "Initial value";
-  await Excel.run(async (context) => {
-    for (let i = 0; i < 10; i++) {
-      let sheet = context.workbook.worksheets.getActiveWorksheet();
-      let range = sheet.getRange("A1");
-      range.load("values");
-      await context.sync();
-      result = range.values[0][0] || "No value found";
-    }
-  });
+  for (let i = 0; i < 10; i++) {
+    let sheet = context.workbook.worksheets.getActiveWorksheet();
+    let range = sheet.getRange("A1");
+    range.load("values");
+    await context.sync();
+    result = range.values[0][0] || "No value found";
+  }
   return result;
 }
 
